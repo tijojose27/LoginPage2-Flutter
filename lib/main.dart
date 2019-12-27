@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -23,49 +25,58 @@ class LoginScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
+            child: Container(
+              decoration:
+                  BoxDecoration(color: Colors.white.withOpacity(0.2)),
+            ),
+          ),
         ),
         Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("LOGIN",
-                  style: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold)),
-
-              SizedBox(
-                height: 10,
-              ),
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
-                decoration: BoxDecoration(color: Color.fromRGBO(61, 40, 25, 0.4), boxShadow: [
-                  BoxShadow(
+                decoration: BoxDecoration(
                     color: Color.fromRGBO(61, 40, 25, 0.4),
-                    blurRadius: 20,
-                    offset: Offset(2, 10),
-                  )
-                ]),
-                 child: Column(
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        child: TextField(
-                          style: TextStyle(color: Colors.white,),
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Username",
-                              hintStyle: TextStyle(color: Colors.grey)),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        child: TextField(
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Password",
-                              hintStyle: TextStyle(color: Colors.grey)),
-                        ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(61, 40, 25, 0.4),
+                        blurRadius: 20,
+                        offset: Offset(2, 10),
                       )
-                    ],
-                  ),
+                    ]),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      child: TextField(
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Username",
+                            hintStyle: TextStyle(color: Colors.grey)),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      child: TextField(
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white),
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Password",
+                            hintStyle: TextStyle(color: Colors.grey)),
+                      ),
+                    )
+                  ],
+                ),
               )
             ],
           ),
